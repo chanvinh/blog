@@ -1,0 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+@import "../scss/variable";
+
+.nav {
+  border-right: 1px solid rgb(219, 219, 219);
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  width: 300px;
+  padding: 0px 20px;
+  h1 {
+    margin: 0px;
+    padding: 20px 0px;
+    font-size: 30px;
+    font-family: $font-family;
+    text-align: center;
+  }
+  ul {
+    list-style: none;
+    padding: 0px;
+    margin: 0px;
+    li {
+      margin-bottom: 10px;
+      &:last-child {
+        margin-bottom: 0px;
+      }
+      svg {
+        margin-right: 10px;
+        transition: transform 0.2s ease-in-out;
+      }
+      p {
+        padding: 15px 0px 15px 10px;
+        margin: 0px;
+        display: flex;
+        align-content: center;
+        cursor: pointer;
+        font-size: 18px;
+        color: #000;
+        font-family: "Kalam", cursive;
+      }
+      a {
+        padding: 15px 0px 15px 10px;
+        display: flex;
+        align-content: center;
+        outline: none;
+        text-decoration: none;
+        font-size: 18px;
+        color: #000;
+        font-family: "Kalam", cursive;
+      }
+      &:hover {
+        transition: background-color 0.2s ease-in-out;
+        background-color: rgb(0, 0, 0, 0.05);
+        border-radius: 10px;
+        svg {
+          transform: scale(1.2);
+        }
+      }
+    }
+  }
+}
+
+.active_nav {
+  transition: background-color 0.2s ease-in-out;
+  background-color: rgb(0, 0, 0, 0.05);
+  border-radius: 10px;
+  a {
+    font-weight: bolder;
+  }
+  svg {
+    transform: scale(1.2);
+  }
+}
