@@ -1,14 +1,11 @@
-@import url('https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap");
 @import "../scss/variable";
 
 .nav {
   border-right: 1px solid rgb(219, 219, 219);
-  position: fixed;
-  left: 0px;
-  top: 0px;
-  bottom: 0px;
   width: 300px;
   padding: 0px 20px;
+  height: 100vh;
   h1 {
     margin: 0px;
     padding: 20px 0px;
@@ -61,6 +58,168 @@
   }
 }
 
+.nav__key {
+  display: flex;
+  width: 450px;
+  .nav__key__left {
+    border-right: 1px solid rgb(219, 219, 219);
+    position: relative;
+    background-color: #fff;
+    z-index: 2;
+    ul {
+      margin: 0px;
+      padding: 2px 15px;
+      list-style: none;
+      li {
+        position: relative;
+        &:hover {
+          a {
+            background-color: rgb(0, 0, 0, 0.05);
+            border-radius: 10px;
+            transform: scale(1.1);
+          }
+          p {
+            background-color: rgb(0, 0, 0, 0.05);
+            border-radius: 10px;
+            transform: scale(1.1);
+          }
+          span {
+            visibility: visible;
+            transform: scale(1);
+          }
+        }
+        &:nth-child(1) {
+          margin-bottom: 20px;
+        }
+        a {
+          outline: none;
+          text-decoration: none;
+          color: #000;
+          padding: 10px;
+          margin: 10px 0px;
+          display: block;
+          transform: scale(1);
+          transition: transform ease-in-out 0.2s;
+        }
+        p {
+          padding: 10px;
+          border-radius: 10px;
+          display: flex;
+          transform: scale(1);
+          transition: transform ease-in-out 0.2s;
+          cursor: pointer;
+        }
+        span {
+          visibility: hidden;
+          background-color: #fff;
+          border: 1px solid rgba(0, 0, 0, 0.05);
+          box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+            rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+          position: absolute;
+          left: calc(100% + 10px);
+          bottom: 10%;
+          display: flex;
+          justify-content: start;
+          padding: 10px 15px;
+          border-radius: 15px;
+          z-index: 1;
+          transform: scale(0);
+          transition: all ease-in-out 0.2s;
+        }
+      }
+    }
+  }
+  .nav__key__right {
+    width: 100%;
+    .search {
+      border-right: 1px solid rgba(0, 0, 0, 0.05);
+      border-radius: 0px 10px 10px 0px;
+      box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px,
+        rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+      width: 100%;
+      height: 100%;
+      position: relative;
+      animation: animationSearch 1s 0s ease-in-out;
+      z-index: 1;
+      .search_top {
+        padding-bottom: 1.5rem;
+        border-bottom: 1px solid rgb(0, 0, 0, 0.1);
+        h2 {
+          padding: 20px;
+          margin: 0px;
+          font-size: 25px;
+          font-family: "Kalam", cursive;
+        }
+        form {
+          display: flex;
+          align-items: center;
+          position: relative;
+          padding: 0px 20px;
+          input {
+            width: 100%;
+            padding: 15px 25px 15px 25px;
+            outline: none;
+            background-color: rgb(239, 239, 239);
+            border: none;
+            border-radius: 10px;
+            font-size: 14px;
+          }
+          span {
+            position: absolute;
+            top: 32%;
+            &:nth-child(1) {
+              left: 25px;
+            }
+            &:last-child {
+              right: 25px;
+              cursor: pointer;
+            }
+            svg {
+              width: 1.1rem;
+              height: 1.1rem;
+            }
+          }
+        }
+      }
+      .search_bottom {
+        margin: 10px 0px;
+        .search_api {
+          ul {
+            list-style: none;
+            margin: 0px;
+            padding: 0px;
+            li {
+              padding: 10px 20px;
+              transition: all ease-in-out 0.2s;
+              cursor: pointer;
+              &:hover {
+                background-color: rgb(0, 0, 0, 0.07);
+              }
+              .user {
+                display: flex;
+                align-items: center;
+                justify-content: start;
+                img {
+                  margin-right: 10px;
+                  width: 50px;
+                  height: 50px;
+                  border-radius: 50%;
+                  object-position: 50%;
+                  object-fit: cover;
+                }
+                p {
+                  font-size: 16px;
+                  font-family: $font-family;
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
 .active_nav {
   transition: background-color 0.2s ease-in-out;
   background-color: rgb(0, 0, 0, 0.05);
@@ -70,5 +229,20 @@
   }
   svg {
     transform: scale(1.2);
+  }
+}
+
+.active_nav_key {
+  p {
+    border: 1px solid rgb(219, 219, 219);
+  }
+}
+
+@keyframes animationSearch {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0%);
   }
 }

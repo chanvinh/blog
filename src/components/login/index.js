@@ -34,7 +34,7 @@ const Login = () => {
   return (
     <div className="login">
       <div className="login__left">
-        <img className="home" src={home} alt="" />
+        <img src={home} alt="" />
         <div className="screen">
           <img id="screenImages" className="screenImages" src={images[index]} />
         </div>
