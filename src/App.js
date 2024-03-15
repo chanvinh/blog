@@ -3,6 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Login from "./components/login";
 import Layout from "./components/layout";
 import Home from "./components/home";
+import Profile from "./components/profile";
 
 function App() {
   const router = createBrowserRouter([
@@ -13,6 +14,10 @@ function App() {
         {
           index: true,
           element: <Home />,
+        },
+        {
+          path: "/profile",
+          element: <Profile />,
         },
       ],
     },

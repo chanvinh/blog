@@ -1,14 +1,16 @@
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
-import React, { useCallback, useState } from "react";
+import React, { useCallback, useState, useReducer } from "react";
 import { Link } from "react-router-dom";
 import home from "../../images/home-phones.png";
+import { reducerNav } from "../../redux/nav/reducer";
 import "./nav.scss";
 import { api, list, list__key } from "./list";
 
 const Nav = () => {
-  const [id, setId] = useState("1");
-  const [key, setKey] = useState("");
+  const [state, dispatch] = useReducer(reducerNav, { id: "1", key: "" });
+  const [id, setId] = useState(state.id);
+  const [key, setKey] = useState(state.key);
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(false);
 
@@ -16,6 +18,13 @@ const Nav = () => {
     if (id === "0") {
       setId("1");
       setKey(key ? key : "");
+      dispatch({
+        type: "CLICK",
+        payload: {
+          id,
+          key,
+        },
+      });
       setShowSearch(false);
       return;
     }
@@ -23,14 +32,30 @@ const Nav = () => {
     if (key === "2") {
       setId(id);
       setKey(key ? key : "");
+      dispatch({
+        type: "CLICK",
+        payload: {
+          id,
+          key,
+        },
+      });
       setShowSearch(true);
       return;
     }
 
     setId(id);
     setKey(key ? key : "");
+    dispatch({
+      type: "CLICK",
+      payload: {
+        id,
+        key,
+      },
+    });
     setShowSearch(false);
   }, []);
+
+console.log(state)
 
   return (
     <>
@@ -71,7 +96,9 @@ const Nav = () => {
                   <li
                     onClick={() => handleClick(item.id, item.key)}
                     className={
-                      item.id === id && item.key === key ? "active_nav_key" : ""
+                      item.id === state.id && item.key === state.key
+                        ? "active_nav_key"
+                        : ""
                     }
                   >
                     {item.id && !item.key ? (
@@ -104,7 +131,6 @@ const Nav = () => {
                       value={search}
                       onChange={(e) => {
                         setSearch(e.target.value);
-                        console.log(e.target.value);
                       }}
                       placeholder="Search"
                     ></input>
