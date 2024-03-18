@@ -23,13 +23,13 @@ export const list = [
     id: "3",
     icon: <ExploreIcon></ExploreIcon>,
     name: "Explore",
-    link: '/explore'
+    link: '/Explore'
   },
   {
     id: "4",
     icon: <SendIcon></SendIcon>,
     name: "Messages",
-    link: '/messages'
+    link: '/Messages'
   },
   {
     id: "5",
@@ -41,7 +41,7 @@ export const list = [
     id: "6",
     icon: <InsertEmoticonIcon></InsertEmoticonIcon>,
     name: "Profile",
-    link: '/profile'
+    link: '/Profile'
 
   },
 ];
@@ -68,13 +68,13 @@ export const list__key = [
     id: "3",
     name: "Explore",
     icon: <ExploreIcon></ExploreIcon>,
-    link: '/explore'
+    link: '/Explore'
   },
   {
     id: "4",
     name: "Messages",
     icon: <SendIcon></SendIcon>,
-    link: '/messages'
+    link: '/Messages'
   },
   {
     id: "5",
@@ -86,7 +86,7 @@ export const list__key = [
     id: "6",
     name: "Profile",
     icon: <InsertEmoticonIcon></InsertEmoticonIcon>,
-    link: '/profile'
+    link: '/Profile'
   },
 ];
 

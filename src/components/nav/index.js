@@ -8,19 +8,21 @@ import { api, list, list__key } from "./list";
 
 const Nav = () => {
   const [id, setId] = useState(
-    localStorage.getItem("id")
+    localStorage.getItem("id") &&
+      window.location.href !== "http://localhost:3000/"
       ? String(JSON.parse(localStorage.getItem("id")))
       : "1"
   );
   const [key, setKey] = useState(
-    localStorage.getItem("key")
+    localStorage.getItem("key") &&
+      window.location.href !== "http://localhost:3000/"
       ? String(JSON.parse(localStorage.getItem("key")))
       : ""
   );
   const [search, setSearch] = useState("");
   const [showSearch, setShowSearch] = useState(
     localStorage.getItem("id")
-      ? Boolean(JSON.parse(localStorage.getItem("showSearch")))
+      ? JSON.parse(localStorage.getItem("showSearch"))
       : false
   );
 
@@ -29,7 +31,6 @@ const Nav = () => {
       setId("1");
       setKey(key ? key : "");
       setShowSearch(false);
-      window.localStorage.clear();
       return;
     }
 
@@ -46,6 +47,12 @@ const Nav = () => {
   }, []);
 
   useEffect(() => {
+    if (window.location.href === "http://localhost:3000/Profile") {
+      localStorage.setItem("id", "6");
+      localStorage.setItem("key", "");
+      localStorage.setItem("showSearch", false);
+      return;
+    }
     localStorage.setItem("id", id);
     localStorage.setItem("key", key);
     localStorage.setItem("showSearch", showSearch);
