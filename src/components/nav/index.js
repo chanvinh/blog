@@ -1,10 +1,10 @@
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
+import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
 import React, { useCallback, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import home from "../../images/home-phones.png";
 import "./nav.scss";
-import { api, list, list__key } from "./list";
+import { list, list__key } from "./list";
 
 const Nav = () => {
   const [id, setId] = useState(
@@ -26,6 +26,9 @@ const Nav = () => {
       : false
   );
 
+  const [data, setData] = useState([]);
+  const [loading, setLoading] = useState(false);
+
   const handleClick = useCallback((id, key) => {
     if (id === "0" || id === "1") {
       setId("1");
@@ -46,6 +49,11 @@ const Nav = () => {
     setShowSearch(false);
   }, []);
 
+  const handleClearSearch = useCallback(() => {
+    setData([]);
+    setSearch("");
+  }, []);
+
   useEffect(() => {
     if (window.location.href === "http://localhost:3000/Profile") {
       localStorage.setItem("id", "6");
@@ -57,6 +65,27 @@ const Nav = () => {
     localStorage.setItem("key", key);
     localStorage.setItem("showSearch", showSearch);
   }, [id, key, showSearch]);
+
+  useEffect(() => {
+    if (!search.trim()) {
+      setData([]);
+      return;
+    }
+    setLoading(true);
+    fetch(
+      `https://tiktok.fullstack.edu.vn/api/users/search?q=${search}&type=less`
+    )
+      .then((res) => {
+        return res.json();
+      })
+      .then((res) => {
+        setData(res.data);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+      });
+  }, [search]);
 
   return (
     <>
@@ -133,28 +162,33 @@ const Nav = () => {
                       }}
                       placeholder="Search"
                     ></input>
-                    {search ? (
-                      <span onClick={() => setSearch("")}>
+                    {search && !loading && (
+                      <span onClick={handleClearSearch}>
                         <CloseOutlinedIcon></CloseOutlinedIcon>
                       </span>
-                    ) : (
-                      <></>
+                    )}
+                    {loading && (
+                      <span className="animationLoad">
+                        <AutorenewOutlinedIcon></AutorenewOutlinedIcon>
+                      </span>
                     )}
                   </form>
                 </div>
                 <div className="search_bottom">
                   <div className="search_api">
                     <ul>
-                      {api.map((item) => {
-                        return (
-                          <li>
-                            <div className="user">
-                              <img src={home} />
-                              <p>{item.name}</p>
-                            </div>
-                          </li>
-                        );
-                      })}
+                      {data &&
+                        data.length > 0 &&
+                        data.map((item) => {
+                          return (
+                            <li>
+                              <div className="user">
+                                <img src={item.avatar} />
+                                <p>{item.full_name}</p>
+                              </div>
+                            </li>
+                          );
+                        })}
                     </ul>
                   </div>
                 </div>

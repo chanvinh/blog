@@ -11,7 +11,7 @@ export const list = [
     id: "1",
     icon: <HomeIcon></HomeIcon>,
     name: "Home",
-    link: '/'
+    link: "/",
   },
   {
     id: "2",
@@ -23,13 +23,13 @@ export const list = [
     id: "3",
     icon: <ExploreIcon></ExploreIcon>,
     name: "Explore",
-    link: '/Explore'
+    link: "/Explore",
   },
   {
     id: "4",
     icon: <SendIcon></SendIcon>,
     name: "Messages",
-    link: '/Messages'
+    link: "/Messages",
   },
   {
     id: "5",
@@ -41,8 +41,7 @@ export const list = [
     id: "6",
     icon: <InsertEmoticonIcon></InsertEmoticonIcon>,
     name: "Profile",
-    link: '/Profile'
-
+    link: "/Profile",
   },
 ];
 
@@ -50,13 +49,13 @@ export const list__key = [
   {
     id: "0",
     icon: <InstagramIcon></InstagramIcon>,
-    link: '/'
+    link: "/",
   },
   {
     id: "1",
     name: "Home",
     icon: <HomeIcon></HomeIcon>,
-    link: '/'
+    link: "/",
   },
   {
     id: "2",
@@ -68,13 +67,13 @@ export const list__key = [
     id: "3",
     name: "Explore",
     icon: <ExploreIcon></ExploreIcon>,
-    link: '/Explore'
+    link: "/Explore",
   },
   {
     id: "4",
     name: "Messages",
     icon: <SendIcon></SendIcon>,
-    link: '/Messages'
+    link: "/Messages",
   },
   {
     id: "5",
@@ -86,17 +85,6 @@ export const list__key = [
     id: "6",
     name: "Profile",
     icon: <InsertEmoticonIcon></InsertEmoticonIcon>,
-    link: '/Profile'
+    link: "/Profile",
   },
 ];
-
-export const api = [
-  {
-    id: '1',
-    name: 'Ung Chấn Vinh',
-  },
-  {
-    id: '2',
-    name: 'Ung Chấn Vinh2',
-  }
-]

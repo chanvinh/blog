@@ -179,6 +179,9 @@
               height: 1.1rem;
             }
           }
+          .animationLoad {
+            animation: animationLoading 1s 0s infinite;
+          }
         }
       }
       .search_bottom {
@@ -244,5 +247,14 @@
   }
   to {
     transform: translateX(0%);
+  }
+}
+
+@keyframes animationLoading {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
   }
 }
