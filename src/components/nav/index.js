@@ -1,7 +1,7 @@
 import SearchOutlinedIcon from "@mui/icons-material/SearchOutlined";
 import CloseOutlinedIcon from "@mui/icons-material/CloseOutlined";
 import AutorenewOutlinedIcon from "@mui/icons-material/AutorenewOutlined";
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState, useMemo } from "react";
 import { Link } from "react-router-dom";
 import "./nav.scss";
 import { list, list__key } from "./list";
@@ -13,13 +13,16 @@ const Nav = () => {
       ? String(JSON.parse(localStorage.getItem("id")))
       : "1"
   );
+
   const [key, setKey] = useState(
     localStorage.getItem("key") &&
       window.location.href !== "http://localhost:3000/"
       ? String(JSON.parse(localStorage.getItem("key")))
       : ""
   );
+
   const [search, setSearch] = useState("");
+
   const [showSearch, setShowSearch] = useState(
     localStorage.getItem("id")
       ? JSON.parse(localStorage.getItem("showSearch"))
@@ -27,7 +30,10 @@ const Nav = () => {
   );
 
   const [data, setData] = useState([]);
+
   const [loading, setLoading] = useState(false);
+
+  const [width, setWidth] = useState(window.innerWidth);
 
   const handleClick = useCallback((id, key) => {
     if (id === "0" || id === "1") {
@@ -53,6 +59,26 @@ const Nav = () => {
     setData([]);
     setSearch("");
   }, []);
+
+  const returnNav = useMemo(() => {
+    if (id && key) {
+      return false;
+    }
+
+    if (width <= 1024) {
+      return false;
+    }
+
+    return true;
+  }, [id, key, width]);
+
+  const returnNavKey = useMemo(() => {
+    if (id && key && width > 1024) {
+      return true;
+    }
+
+    return false;
+  }, [id, key, width]);
 
   useEffect(() => {
     if (window.location.href === "http://localhost:3000/Profile") {
@@ -87,9 +113,17 @@ const Nav = () => {
       });
   }, [search]);
 
+  useEffect(() => {
+    const handleWindowResize = () => setWidth(window.innerWidth);
+    window.addEventListener("resize", handleWindowResize);
+    return () => {
+      window.removeEventListener("resize", handleWindowResize);
+    };
+  }, []);
+
   return (
     <>
-      {id && !key && (
+      {returnNav && (
         <div className="nav">
           <h1>My blog</h1>
           <ul>
@@ -117,7 +151,7 @@ const Nav = () => {
         </div>
       )}
 
-      {id && key && (
+      {returnNavKey && (
         <div className="nav__key">
           <div className="nav__key__left">
             <ul>
@@ -197,6 +231,8 @@ const Nav = () => {
           </div>
         </div>
       )}
+
+      {width <= 1024 && <>asdasd</>}
     </>
   );
 };

@@ -6,6 +6,9 @@
   width: 1000px;
   margin: auto;
   padding-right: 1rem;
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
   .item {
     padding: 20px 0px;
     .item_top {
