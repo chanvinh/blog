@@ -4,7 +4,6 @@ import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlin
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
 import "./profile.scss";
 import banner from "../../images/banner.png";
-import home from "../../images/home-phones.png";
 import { list } from "./list";
 
 const Profile = () => {
