@@ -6,6 +6,12 @@
   border-right: 1px solid rgb(219, 219, 219);
   width: 300px;
   padding: 0px 20px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  background-color: #fff;
+  z-index: 999;
   h1 {
     margin: 0px;
     padding: 20px 0px;
@@ -61,6 +67,11 @@
 .nav__key {
   display: flex;
   width: 450px;
+  position: fixed;
+  left: 0px;
+  top: 0px;
+  bottom: 0px;
+  z-index: 999;
   .nav__key__left {
     border-right: 1px solid rgb(219, 219, 219);
     position: relative;
@@ -140,6 +151,8 @@
       height: 100%;
       position: relative;
       animation: animationSearch 1s 0s ease-in-out;
+      background-color: #fff;
+      transition: backgroud-color 0.1s ease-in-out;
       z-index: 1;
       .search_top {
         padding-bottom: 1.5rem;
@@ -211,6 +224,7 @@
                   object-fit: cover;
                 }
                 p {
+                  margin: 0px;
                   font-size: 16px;
                   font-family: $font-family;
                 }
@@ -243,9 +257,11 @@
 
 @keyframes animationSearch {
   from {
+    opacity: 0;
     transform: translateX(-100%);
   }
   to {
+    opacity: 1;
     transform: translateX(0%);
   }
 }

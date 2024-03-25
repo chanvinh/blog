@@ -1,10 +1,11 @@
 @import "../../scss/variable";
 
 .profile {
-  width: 1000px;
+  max-width: 980px;
   margin: 0px auto;
   height: 100vh;
   padding: 2rem 0px;
+  margin-left: 350px;
   .profile_top {
     display: flex;
     margin-bottom: 2rem;
