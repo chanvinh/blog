@@ -66,12 +66,17 @@
 
 .nav__key {
   display: flex;
-  width: 450px;
   position: fixed;
   left: 0px;
   top: 0px;
   bottom: 0px;
   z-index: 999;
+  @include Responsive(MD) {
+    width: 400px;
+  }
+  @include Responsive(XL) {
+    width: 450px;
+  }
   .nav__key__left {
     border-right: 1px solid rgb(219, 219, 219);
     position: relative;

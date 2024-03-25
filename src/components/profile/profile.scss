@@ -1,11 +1,20 @@
 @import "../../scss/variable";
+@import "../../scss/responsive";
 
 .profile {
   max-width: 980px;
   margin: 0px auto;
   height: 100vh;
   padding: 2rem 0px;
-  margin-left: 350px;
+  @include Responsive(MD) {
+    margin-left: 415px;
+  }
+  @include Responsive(XL) {
+    margin-left: 465px;
+  }
+  @include Responsive(PC) {
+    margin-left: 500px;
+  }
   .profile_top {
     display: flex;
     margin-bottom: 2rem;

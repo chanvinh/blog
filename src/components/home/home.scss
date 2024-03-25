@@ -1,4 +1,5 @@
 @import "../../scss/variable";
+@import "../../scss/responsive";
 
 .home {
   height: 100vh;
@@ -9,7 +10,15 @@
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
-  margin-left: 350px;
+  @include Responsive(MD) {
+    margin-left: 415px;
+  }
+  @include Responsive(XL) {
+    margin-left: 465px;
+  }
+  @include Responsive(PC) {
+    margin-left: 500px;
+  }
   .item {
     padding: 20px 0px;
     .item_top {
