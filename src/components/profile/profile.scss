@@ -6,6 +6,9 @@
   margin: 0px auto;
   height: 100vh;
   padding: 2rem 0px;
+  @include Responsive(UNDERMD) {
+    margin-left: 100px;
+  }
   @include Responsive(MD) {
     margin-left: 415px;
   }

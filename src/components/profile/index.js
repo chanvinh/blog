@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import SettingsOutlinedIcon from "@mui/icons-material/SettingsOutlined";
 import FavoriteBorderOutlinedIcon from "@mui/icons-material/FavoriteBorderOutlined";
 import ModeCommentOutlinedIcon from "@mui/icons-material/ModeCommentOutlined";
@@ -7,15 +7,7 @@ import banner from "../../images/banner.png";
 import { list } from "./list";
 
 const Profile = () => {
-  const [id, setId] = useState(
-    localStorage.getItem("id_profile")
-      ? String(localStorage.getItem("id_profile"))
-      : "1"
-  );
-
-  useEffect(() => {
-    localStorage.setItem("id_profile", id);
-  }, [id]);
+  const [id, setId] = useState("1");
 
   return (
     <div className="profile">
