@@ -10,6 +10,9 @@
   padding-left: 1rem;
   display: flex;
   flex-direction: column;
+  @include Responsive(UNDERMD) {
+    margin-left: 80px;
+  }
   @include Responsive(MD) {
     margin-left: 415px;
   }

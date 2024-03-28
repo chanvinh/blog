@@ -1,6 +1,7 @@
 $XS: 480px;
 $SM: 768px;
-$MD: 1024px;
+$UNDERMD: 1024px;
+$MD: 1025px;
 $XL: 1170px;
 $PC: 1280px;
 
@@ -11,6 +12,9 @@ $PC: 1280px;
   @else if $canvas == SM {
    @media only screen and (max-width: $SM) { @content; } 
   }
+  @else if $canvas == UNDERMD {
+    @media only screen and (max-width: $UNDERMD) { @content; } 
+   }
   @else if $canvas == MD {
    @media only screen and (min-width: $MD) { @content; } 
   }

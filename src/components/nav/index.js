@@ -73,12 +73,29 @@ const Nav = () => {
   }, [id, key, width]);
 
   const returnNavKey = useMemo(() => {
-    if (id && key && width > 1024) {
+    if (id && key) {
+      return true;
+    }
+
+    if (width <= 1024) {
       return true;
     }
 
     return false;
   }, [id, key, width]);
+
+  const activeKeyNav = useCallback(
+    (itemId, itemKey) => {
+      if (itemId === id && itemKey === key) {
+        return true;
+      }
+      if (itemId === id && !itemKey && width <= 1024) {
+        return true;
+      }
+      return false;
+    },
+    [id, key, width]
+  );
 
   useEffect(() => {
     if (window.location.href === "http://localhost:3000/Profile") {
@@ -160,7 +177,7 @@ const Nav = () => {
                   <li
                     onClick={() => handleClick(item.id, item.key)}
                     className={
-                      item.id === id && item.key === key ? "active_nav_key" : ""
+                      activeKeyNav(item.id, item.key) ? "active_nav_key" : ""
                     }
                   >
                     {item.id && !item.key ? (
@@ -231,8 +248,6 @@ const Nav = () => {
           </div>
         </div>
       )}
-
-      {width <= 1024 && <>asdasd</>}
     </>
   );
 };
